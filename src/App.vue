@@ -25,13 +25,14 @@
 
         </div>
 
-        <div>
-          <h2>Details</h2>
+        <div class="product-list-details">
+          <h3>Details</h3>
         </div>
-
         <!----product list start-->
         <ul> 
-          <li>cotton</li>
+          <li v-for="detail in productDetails" :key="detail">  
+            {{ detail }}
+          </li>
         </ul>
         <!----product list end-->
 
@@ -40,16 +41,20 @@
         <div class="socks-colors"> 
 
         </div>
+
+        <div v-for="variant in variants" :key="variant.variantsId">
+         <p>{{ variant.variantsColor }}</p> 
+          
+        </div>
         <!----product color end---->  
 
-        <button class="btn">add to cart</button>
+        <button class="btn" @click="addItems">add to cart</button>
       </div>
 
       <!-------product details------- end----->
 
       <div class="product-cart">
-        <h4 > Cart(0)</h4>
-       
+        <h4 > Cart({{ cart }})</h4>  
       </div>
      
 
@@ -73,10 +78,29 @@ export default {
       product: "Abigail's Brand Of Socks",
       image: require('./assets/images/yellow-socks.jpg'), /*for images to appear in the html from data you have to require it*/ 
       inStock: true,                                  /*inStock: v-if="inStock" = will display instock if instock is true, ifInstock is false in data it will not display, */ 
+      productDetails: ["80% Cotton", "20% Polyster", "Gender-Neutral"],
+      variants: [
+                 { variantsId: 2234,
+                  variantsColor: "yellow"
 
+                 },
+                 { variantsId: 2235,
+                  variantsColor: "purple"
+
+                 },
+          
+      ],
+
+      cart: 0,
 
     }
   },
+
+  methods: {
+    addItems(){
+      this.cart += 1;
+    }
+  }
 }
 </script>
 
@@ -135,6 +159,11 @@ export default {
 
 .product-details h2{
   margin-bottom: 2rem;
+}
+
+.product-list-details h3{
+
+  font-size: 35px;
 
 
 }
@@ -145,7 +174,7 @@ export default {
   height: 50px;
   width: 50px;
   cursor: pointer;
-  background-color: tomato;
+  background-color: yellow;
   margin-top: 2rem;
 }
 .btn{
@@ -163,6 +192,7 @@ export default {
 ul{
 
   margin-bottom: 2rem;
+  margin-left: 2rem;
 
 }
 
