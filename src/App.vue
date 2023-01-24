@@ -4,23 +4,25 @@
     <div class="product-background1"> 
       <!----display---image start------------>
       <div class="product-image">
-        <img src="./assets/images/purple-socks.jpg" alt="gym socks" />
+      <img :src="image" />
         
       </div>
       <!-----display--------image end--------->
 
       <!-------product details------- start--->
       <div class="product-details"> 
-        <div> 
-          <h1> Abigail's Brand Of Socks </h1>
-
+        <div class="product-name"> 
+          <h1> {{ product }}</h1>
         </div>
+
         <div> 
           <h2>Shipping: 0</h2>
         </div>
 
         <div> 
-          <h2>In Stock</h2>
+          <h2 v-if="inStock">In Stock</h2>
+          <!-- <h2 v-else="inStock">Out of Stock</h2> -->
+
         </div>
 
         <div>
@@ -63,11 +65,25 @@
 
 export default {
   name: 'App',
-  components: {
-   
-  }
+  components: { 
+  },
+
+  data() {
+    return {
+      product: "Abigail's Brand Of Socks",
+      image: require('./assets/images/yellow-socks.jpg'), /*for images to appear in the html from data you have to require it*/ 
+      inStock: true,                                  /*inStock: v-if="inStock" = will display instock if instock is true, ifInstock is false in data it will not display, */ 
+
+
+    }
+  },
 }
 </script>
+
+
+
+
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -80,7 +96,7 @@ export default {
 }
 
 .product-background{
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   background: rgb(184, 223, 235);
   font-family: 'Poppins';
@@ -91,12 +107,12 @@ export default {
 }
 
 .product-image{
-  padding: 7rem 5rem;
+  padding: 6rem 7rem;
 }
 
 .product-image img{
-  width: 40%;
-  height: 100%;
+  width: 32rem;
+  height: 40rem;
   border-radius: 15px;
   cursor: pointer;
   object-fit: cover;
@@ -105,8 +121,7 @@ export default {
 
 .product-details{
   /* width: 50%; */
-  padding-top: 6rem;
-  margin-left: -50rem;
+  padding-top: 7rem;
   text-align: justify;
 
 
@@ -115,6 +130,7 @@ export default {
 .product-details h1{
   font-size: 2.5rem;
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 .product-details h2{
@@ -151,7 +167,7 @@ ul{
 }
 
 .product-cart{
-  padding-top: 7rem;
+  padding-top: 8rem;
   padding-right: 5rem;
   
 }
@@ -164,4 +180,18 @@ ul{
   border: 1px solid black;
   border-radius: 5px;
 }
+
+
+/* @media screen and (min-width: 480px) {
+
+  .product-details h1 {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+    }
+  .product-details {
+      padding-top: 6rem;
+    
+    
+    }
+} */
 </style>
