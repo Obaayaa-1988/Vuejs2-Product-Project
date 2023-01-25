@@ -41,11 +41,24 @@
         <div class="socks-colors"> 
 
         </div>
+        <!--  -->
 
-        <div v-for="variant in variants" :key="variant.variantsId">
-         <p>{{ variant.variantsColor }}</p> 
+        <div v-for="variant in variants" 
+        :key="variant.variantsId"
+        class="socks-colors"
+        :style="{ backgroundColor: variant.variantsColor }"
+        @mouseover="updateProduct(variant.variantsImage)"
+>                                                                  <!----here we are style binding with a class which has been partially styled with no background colors in css-->
+        >                                                          <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
+        >                                                          <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
+                                                                    and the updateProduct function that took the variantImage variable as a parameter-->
+
+         <!-- <p @mouseover="updateProduct(variant.variantsImage)"></p>  -->
+         <!-- <p @mouseover="updateProduct(variant.variantsImage)">{{ variant.variantsColor }}</p>  -->
           
         </div>
+
+        
         <!----product color end---->  
 
         <button class="btn" @click="addItems">add to cart</button>
@@ -81,11 +94,15 @@ export default {
       productDetails: ["80% Cotton", "20% Polyster", "Gender-Neutral"],
       variants: [
                  { variantsId: 2234,
-                  variantsColor: "yellow"
-
+                  variantsColor: "yellow",
+                  variantsImage: require('./assets/images/yellow-socks.jpg')
+                 
                  },
                  { variantsId: 2235,
-                  variantsColor: "purple"
+                   variantsColor: "purple",
+                   variantsImage: require('./assets/images/purple-socks.jpg')
+
+                 
 
                  },
           
@@ -98,8 +115,15 @@ export default {
 
   methods: {
     addItems(){
-      this.cart += 1;
+      this.cart += 1;/**here we are targeting the cart data with the button in html, with this.cart with JS arimethics */
+    },
+
+    updateProduct(variantsImage){
+      this.image = variantsImage;/**this.image means that we want the dummy image to be changed to the variantImage, the update function is giving a parameter because we want the image to be
+                                 dynamic since they two images. the updateProduct function is then connected to the html element  */
     }
+
+
   }
 }
 </script>
@@ -174,9 +198,16 @@ export default {
   height: 50px;
   width: 50px;
   cursor: pointer;
-  background-color: yellow;
-  margin-top: 2rem;
+  /* background-color: yellow; */
+  margin-top: 1rem;
 }
+/* .socks-colors1{
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  background-color: purple;
+  margin-top: 2rem;
+} */
 .btn{
   outline: none;
   background-color: aquamarine;
@@ -191,7 +222,7 @@ export default {
 
 ul{
 
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   margin-left: 2rem;
 
 }
