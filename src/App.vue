@@ -38,9 +38,9 @@
 
 
         <!----product color start-->
-        <div class="socks-colors"> 
+        <!-- <div class="socks-colors"> 
 
-        </div>
+        </div> -->
         <!--  -->
 
         <div v-for="variant in variants" 
@@ -49,8 +49,8 @@
         :style="{ backgroundColor: variant.variantsColor }"
         @mouseover="updateProduct(variant.variantsImage)"
 >                                                                  <!----here we are style binding with a class which has been partially styled with no background colors in css-->
-        >                                                          <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
-        >                                                          <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
+                                                                  <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
+                                                                <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
                                                                     and the updateProduct function that took the variantImage variable as a parameter-->
 
          <!-- <p @mouseover="updateProduct(variant.variantsImage)"></p>  -->
@@ -61,7 +61,10 @@
         
         <!----product color end---->  
 
-        <button class="btn" @click="addItems">add to cart</button>
+        <button id="btn"  @click="addItems" :disabled="!inStock"
+        :class="{disabledButton : !inStock }"
+        
+        >add to cart</button><!-------adding disabled style binding when our items are out of stock-->
       </div>
 
       <!-------product details------- end----->
@@ -208,7 +211,7 @@ export default {
   background-color: purple;
   margin-top: 2rem;
 } */
-.btn{
+#btn{
   outline: none;
   background-color: aquamarine;
   padding: 1.1rem 0.9rem ;
@@ -218,6 +221,10 @@ export default {
   font-size: 20px;
   font-weight: bold;
   margin-top: 2rem;
+}
+
+.disabledButton{
+  background-color: rgb(129, 129, 128);
 }
 
 ul{
