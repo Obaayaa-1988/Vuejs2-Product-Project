@@ -15,6 +15,11 @@
           <h1> {{ product }}</h1>
         </div>
 
+        <div>
+          <h2>Price: GHS{{ price }}</h2>
+        </div>
+
+
         <div> 
           <h2>Shipping: 0</h2>
         </div>
@@ -112,6 +117,7 @@ export default {
       ],
 
       cart: 0,
+      price: 10
 
     }
   },
@@ -180,7 +186,7 @@ export default {
 
 .product-details h1{
   font-size: 2.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
