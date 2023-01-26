@@ -18,14 +18,21 @@
         <div>
           <h2>Price: GHS{{ price }}</h2>
         </div>
+
+        <div>
+          <h2>Shipping Fee: GHS{{ shipping }}</h2>
+        </div>
+
         <div>
           <h2>Total: GHS{{ totalProductAdded() }}</h2><!----this is the function for the total product added for vue to display throught the html-->
         </div>
 
+        
 
-        <div> 
-          <h2>Shipping: 0</h2>
+        <div>
+          <h2>Total Items and Shipping Fee: GHS{{ totalItemShipping()  }}</h2>
         </div>
+
 
         <div> 
           <h2 v-if="inStock">In Stock</h2>
@@ -55,8 +62,8 @@
         :key="variant.variantsId"
         class="socks-colors"
         :style="{ backgroundColor: variant.variantsColor }"
-        @mouseover="updateProduct(variant.variantsImage)"
->                                                                  <!----here we are style binding with a class which has been partially styled with no background colors in css-->
+        @mouseover="updateProduct(variant.variantsImage)">
+                                                                  <!----here we are style binding with a class which has been partially styled with no background colors in css-->
                                                                   <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
                                                                 <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
                                                                     and the updateProduct function that took the variantImage variable as a parameter-->
@@ -100,13 +107,13 @@ export default {
   data() {
     return {
       product: "Abigail's Brand Of Socks",
-      image: require('./assets/images/yellow-socks.jpg'), /*for images to appear in the html from data you have to require it*/ 
+      image: require('./assets/images/yellow-plain.jpg'), /*for images to appear in the html from data you have to require it*/ 
       inStock: true,                                  /*inStock: v-if="inStock" = will display instock if instock is true, ifInstock is false in data it will not display, */ 
       productDetails: ["80% Cotton", "20% Polyster", "Gender-Neutral"],
       variants: [
                  { variantsId: 2234,
                   variantsColor: "yellow",
-                  variantsImage: require('./assets/images/yellow-socks.jpg')
+                  variantsImage: require('./assets/images/yellow-plain.jpg')
                  
                  },
                  { variantsId: 2235,
@@ -122,6 +129,8 @@ export default {
       cart: 0,
       price: 10,
       total: 0,
+      shipping: 5,
+      sum: 0,
 
     }
   },
@@ -137,9 +146,17 @@ export default {
     },
 
     totalProductAdded(){
-     return this.total = this.cart * this.price;/**this function says that the total must increase from current state 0 to when the add to cart button is clicked
+     return this.total = this.cart * this.price;/**this function says that the total must increase from current state 0 to when the add to cart button is clicked + shippiong fee
           */
+    },
+
+    totalItemShipping(){
+      return this.sum = this.totalProductAdded() + this.shipping;
     }
+
+
+
+
 
 
   }
@@ -173,7 +190,7 @@ export default {
 }
 
 .product-image{
-  padding: 6rem 7rem;
+  padding: 6rem 6rem;
 }
 
 .product-image img{
@@ -187,7 +204,7 @@ export default {
 
 .product-details{
   /* width: 50%; */
-  padding-top: 7rem;
+  padding-top: 4rem;
   text-align: justify;
 
 
