@@ -12,7 +12,8 @@
       <!-------product details------- start--->
       <div class="product-details"> 
         <div class="product-name"> 
-          <h1> {{ product }}</h1>
+          <!-- <h1> {{ product }}</h1>  -->
+          <h1> {{ title }}</h1> <!------using computer properties to display product name-->
         </div>
 
         <div>
@@ -154,12 +155,21 @@ export default {
       return this.sum = this.totalProductAdded() + this.shipping;
     }
 
+  },
 
 
 
+  computed: {
+    title(){
+      return this.product;
+
+    }, /**this computed property is for displaying the product variable */
 
 
-  }
+
+  },
+
+
 }
 </script>
 
