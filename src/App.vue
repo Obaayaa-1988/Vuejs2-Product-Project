@@ -18,6 +18,9 @@
         <div>
           <h2>Price: GHS{{ price }}</h2>
         </div>
+        <div>
+          <h2>Total: GHS{{ totalProductAdded() }}</h2><!----this is the function for the total product added for vue to display throught the html-->
+        </div>
 
 
         <div> 
@@ -117,7 +120,8 @@ export default {
       ],
 
       cart: 0,
-      price: 10
+      price: 10,
+      total: 0,
 
     }
   },
@@ -130,6 +134,11 @@ export default {
     updateProduct(variantsImage){
       this.image = variantsImage;/**this.image means that we want the dummy image to be changed to the variantImage, the update function is giving a parameter because we want the image to be
                                  dynamic since they two images. the updateProduct function is then connected to the html element  */
+    },
+
+    totalProductAdded(){
+     return this.total = this.cart * this.price;/**this function says that the total must increase from current state 0 to when the add to cart button is clicked
+          */
     }
 
 
@@ -142,7 +151,7 @@ export default {
 
 
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *{
