@@ -138,11 +138,12 @@ export default {
 
   methods: {
     addItems(){
-      this.cart += 1;/**here we are targeting the cart data with the button in html, with this.cart with JS arimethics */
+      this.cart += 1;/**here we are targeting the cart data with the button in html, with this.cart with JS arimethics this will increase the number in the cart when this method function is put on add
+                   add items to cart button*/
     },
 
     updateProduct(variantsImage){
-      this.image = variantsImage;/**this.image means that we want the dummy image to be changed to the variantImage, the update function is giving a parameter because we want the image to be
+      this.image = variantsImage;/**this.image means that we want the dummy image(the imaged we used for the initial heigth and width) to be changed to the variantImage, the update function is giving a parameter because we want the image to be
                                  dynamic since they two images. the updateProduct function is then connected to the html element  */
     },
 
