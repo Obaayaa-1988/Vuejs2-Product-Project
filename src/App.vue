@@ -65,7 +65,7 @@
           @mouseover="updateProduct(index)">
 
                <!-- @mouseover="updateProduct(variant.variantsImage) -->
-<!----here we are style binding with a class which has been partially styled with no background colors in css-->
+           <!----here we are style binding with a class which has been partially styled with no background colors in css-->
           <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
           <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
                                                                     and the updateProduct function that took the variantImage variable as a parameter-->
@@ -94,14 +94,22 @@
 
     </div>
     <!--------------main flex------------end-->
+    <!--------------review and rating flex----start-->
+    <ReviewPage />
+   
+    <!--------------review and rating flex----end-->
+    
+
   </div>
 </template>
 
 <script>
+import ReviewPage from './components/ReviewPage.vue';
 
 export default {
   name: 'App',
   components: {
+    ReviewPage,
   },
 
   data() {
@@ -218,7 +226,7 @@ export default {
 }
 
 .product-background {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background: rgb(184, 223, 235);
   font-family: 'Poppins';
