@@ -40,7 +40,15 @@
 
 <script>
 export default {
-    name: "ReviewPage"
+    name: "ReviewPage",
+
+    data (){
+        return{
+            name: null,
+            review: null,
+            rating: null
+        }
+    }
 
 }
 </script>
