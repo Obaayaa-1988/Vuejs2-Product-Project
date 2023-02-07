@@ -95,7 +95,7 @@
     </div>
     <!--------------main flex------------end-->
     <!--------------review and rating flex----start-->
-    <ReviewPage />
+    <ReviewPage class="rev" />
    
     <!--------------review and rating flex----end-->
     
@@ -329,7 +329,10 @@ ul {
   border: 1px solid black;
   border-radius: 5px;
 }
-
+.rev{
+  padding-top: 5rem;
+  padding-bottom: 10rem;
+}
 
 /* @media screen and (min-width: 480px) {
 
