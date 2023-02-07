@@ -38,7 +38,7 @@
 
         <div>
           <h2 v-if="inStock">In Stock</h2>
-          <!-- <h2 v-else="inStock">Out of Stock</h2> -->
+          <h2 v-else>Out of Stock</h2>
 
         </div>
 
@@ -109,7 +109,7 @@ export default {
       product: "Abigail's Brand Of Socks",
       // image: require('./assets/images/yellow-plain.jpg'),
       selectedVariant: 0,                                                    /*for images to appear in the html from data you have to require it*/
-      inStock: true,                                  /*inStock: v-if="inStock" = will display instock if instock is true, ifInstock is false in data it will not display, */
+      // inStock: true,                                  /*inStock: v-if="inStock" = will display instock if instock is true, ifInstock is false in data it will not display, */
       productDetails: ["80% Cotton", "20% Polyster", "Gender-Neutral"],
       variants: [
         {
@@ -185,7 +185,12 @@ export default {
 
     },
 
-    /**definin */
+    /**defining inStock data also here instead of boolean variable in thevue data properties  */
+
+    inStock(){
+      return this.variants[this.selectedVariant].variantsQuantity
+
+    }
 
 
 
