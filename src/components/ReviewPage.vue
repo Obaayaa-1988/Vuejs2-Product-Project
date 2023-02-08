@@ -1,37 +1,50 @@
 <template>
 <div class="container">
-    <div>
-        <form> 
-        <h2>Review Form</h2>
+    <div class="review-flex" >
+        <div class="form-width"> 
 
-            <p> 
-                <label for="name">Name:</label>
-                <input id="name" type="text" >
-            </p>
-            <p> 
-                <label>Reviews:</label>
-             <textarea id="review"></textarea>
+            <form> 
+                <h2>Review Form</h2>
+    
+                <p> 
+                    <label for="name">Name:</label>
+                    <input id="name" type="text" >
+                </p>
+                <p> 
+                    <label>Reviews:</label>
+                 <textarea id="review"></textarea>
+    
+                </p>
+    
+                <p> 
+                    <label>Rating</label>
+                    <select id="rating">
+                        <option>0</option> 
+                        <option>5</option> 
+                        <option>4</option> 
+                        <option>3</option> 
+                        <option>2</option> 
+                        <option>1</option> 
+                    </select>
+                </p>
+    
+    
+                <button>submit</button>
+    
+    
+    
+            </form>
+        </div>
 
-            </p>
+        <div class="review-width"> 
+            <h2>Reviews</h2>
+            <div class="review-card"> 
+                <p>Name: {{ name }}</p>
+                <p> Review: I really love the product very much</p>
+                <p>rating: {{ rating }}</p>
 
-            <p> 
-                <label>Rating</label>
-                <select id="rating">
-                    <option>0</option> 
-                    <option>5</option> 
-                    <option>4</option> 
-                    <option>3</option> 
-                    <option>2</option> 
-                    <option>1</option> 
-                </select>
-            </p>
-
-
-            <button>submit</button>
-
-
-
-        </form>
+            </div>
+        </div>
     </div>
 
 
@@ -60,15 +73,21 @@ export default {
     
 }
 
+.review-flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-width{
+    width: 50%;
+}
+
 form{
     max-width: 600px;
     height: 550px;
-    background-color: rgb(241, 237, 231);
+    background-color: rgb(113, 188, 231);
     padding-bottom: 4rem;
-    /* padding: 3rem; */
-   
-
- 
+    border-radius: 20px;
 }
 
 form h2{
@@ -114,7 +133,12 @@ button{
     border: none;
     border-radius: 5px;
     margin-left: 3rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
 
+}
+
+
+.review-width{
+    width: 50%;
 }
 </style>
