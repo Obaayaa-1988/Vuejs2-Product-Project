@@ -330,7 +330,7 @@ ul {
   border-radius: 5px;
 }
 .rev{
-  padding-top: 5rem;
+  padding-top: 10rem;
   padding-bottom: 10rem;
 }
 
