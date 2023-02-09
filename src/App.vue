@@ -94,7 +94,7 @@
     </div>
     <!--------------main flex------------end-->
     <!--------------review and rating flex----start-->
-    <ReviewPage class="rev" />
+    <ReviewPage class="rev" @review-submitted="addReview" />
    
     <!--------------review and rating flex----end-->
     
@@ -141,6 +141,7 @@ export default {
       total: 0,
       shipping: 5,
       sum: 0,
+      reviews: [ ]
 
     }
   },
@@ -169,7 +170,15 @@ export default {
 
     totalItemShipping() {
       return this.sum = this.totalProductAdded() + this.shipping; 
+    },
+
+
+    addReview(productReview){
+      this.reviews.push(productReview)
+
     }
+
+
 
   },
 
