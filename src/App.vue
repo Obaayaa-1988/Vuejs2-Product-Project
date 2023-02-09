@@ -1,97 +1,96 @@
 <template>
-  <div id="app" class="product-background">
-    <!--------------main flex----------start--->
-    <div class="product-background1">
-      <!----display---image start------------>
-      <div class="product-image">
-        <img :src="image" />
+  <div id="app" class="product-background" >
+    <div class="container"> 
 
+      <!--------------main flex----------start--->
+      <div class="product-background1">
+        <!----display---image start------------>
+        <div class="product-image">
+          <img :src="image" />
+  
+        </div>
+        <!-----display--------image end--------->
+  
+        <!-------product details------- start--->
+        <div class="product-details">
+          <div class="product-name">
+            <!-- <h1> {{ product }}</h1>  -->
+            <h1> {{ title }}</h1> <!------using computer properties to display product name-->
+          </div>
+  
+          <div>
+            <h2>Price: GHS{{ price }}</h2>
+          </div>
+  
+          <div>
+            <h2>Shipping Fee: GHS{{ shipping }}</h2>
+          </div>
+  
+          <div>
+            <h2>Total: GHS{{ totalProductAdded() }}</h2>
+            <!----this is the function for the total product added for vue to display throught the html-->
+          </div>
+  
+  
+  
+          <div>
+            <h2>Total Items and Shipping Fee: GHS{{ totalItemShipping() }}</h2>
+          </div>
+  
+  
+          <div>
+            <h2 v-if="inStock">In Stock</h2>
+            <h2 v-else>Out of Stock</h2>
+  
+          </div>
+  
+          <div class="product-list-details">
+            <h3>Details</h3>
+          </div>
+          <!----product list start-->
+          <ul>
+            <li v-for="detail in productDetails" :key="detail">
+              {{ detail }}
+            </li>
+          </ul>
+          <!----product list end-->
+  
+  
+          <!----product color start-->
+          <!-- <div class="socks-colors"> 
+  
+          </div> -->
+          <!--  -->
+  
+          <div v-for="(variant, index  ) in variants" :key="variant.variantsId" class="socks-colors"
+            :style="{ backgroundColor: variant.variantsColor }" 
+            @mouseover="updateProduct(index)">
+  
+                 <!-- @mouseover="updateProduct(variant.variantsImage) -->
+             <!----here we are style binding with a class which has been partially styled with no background colors in css-->
+            <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
+            <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
+                                                                      and the updateProduct function that took the variantImage variable as a parameter-->
+  
+            <!-- <p @mouseover="updateProduct(variant.variantsImage)"></p>  -->
+            <!-- <p @mouseover="updateProduct(variant.variantsImage)">{{ variant.variantsColor }}</p>  -->
+  
+          </div>
+  
+  
+          <!----product color end---->
+  
+          <button id="btn" @click="addItems" :disabled="!inStock" :class="{ disabledButton: !inStock }">add to
+            cart</button><!-------adding disabled style binding when our items are out of stock-->
+        </div>
+  
+        <!-------product details------- end----->
+  
+        <div class="product-cart">
+          <h4> Cart({{ cart }})</h4>
+        </div>
+  
       </div>
-      <!-----display--------image end--------->
-
-      <!-------product details------- start--->
-      <div class="product-details">
-        <div class="product-name">
-          <!-- <h1> {{ product }}</h1>  -->
-          <h1> {{ title }}</h1> <!------using computer properties to display product name-->
-        </div>
-
-        <div>
-          <h2>Price: GHS{{ price }}</h2>
-        </div>
-
-        <div>
-          <h2>Shipping Fee: GHS{{ shipping }}</h2>
-        </div>
-
-        <div>
-          <h2>Total: GHS{{ totalProductAdded() }}</h2>
-          <!----this is the function for the total product added for vue to display throught the html-->
-        </div>
-
-
-
-        <div>
-          <h2>Total Items and Shipping Fee: GHS{{ totalItemShipping() }}</h2>
-        </div>
-
-
-        <div>
-          <h2 v-if="inStock">In Stock</h2>
-          <h2 v-else>Out of Stock</h2>
-
-        </div>
-
-        <div class="product-list-details">
-          <h3>Details</h3>
-        </div>
-        <!----product list start-->
-        <ul>
-          <li v-for="detail in productDetails" :key="detail">
-            {{ detail }}
-          </li>
-        </ul>
-        <!----product list end-->
-
-
-        <!----product color start-->
-        <!-- <div class="socks-colors"> 
-
-        </div> -->
-        <!--  -->
-
-        <div v-for="(variant, index  ) in variants" :key="variant.variantsId" class="socks-colors"
-          :style="{ backgroundColor: variant.variantsColor }" 
-          @mouseover="updateProduct(index)">
-
-               <!-- @mouseover="updateProduct(variant.variantsImage) -->
-           <!----here we are style binding with a class which has been partially styled with no background colors in css-->
-          <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
-          <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
-                                                                    and the updateProduct function that took the variantImage variable as a parameter-->
-
-          <!-- <p @mouseover="updateProduct(variant.variantsImage)"></p>  -->
-          <!-- <p @mouseover="updateProduct(variant.variantsImage)">{{ variant.variantsColor }}</p>  -->
-
-        </div>
-
-
-        <!----product color end---->
-
-        <button id="btn" @click="addItems" :disabled="!inStock" :class="{ disabledButton: !inStock }">add to
-          cart</button><!-------adding disabled style binding when our items are out of stock-->
-      </div>
-
-      <!-------product details------- end----->
-
-      <div class="product-cart">
-        <h4> Cart({{ cart }})</h4>
-      </div>
-
-
-
-
-
     </div>
     <!--------------main flex------------end-->
     <!--------------review and rating flex----start-->
@@ -132,9 +131,6 @@ export default {
           variantsColor: "purple",
           variantsImage: require('./assets/images/purple-socks.jpg'),
           variantsQuantity: 0,
-
-
-
 
         },
 
@@ -200,10 +196,6 @@ export default {
 
     }
 
-
-
-
-
   },
 
 
@@ -225,6 +217,12 @@ export default {
 
 }
 
+.container {
+  width: 80%;
+  margin: auto;
+
+}
+
 .product-background {
   height: 100%;
   width: 100%;
@@ -238,7 +236,7 @@ export default {
 }
 
 .product-image {
-  padding: 6rem 6rem;
+  padding-top:  6rem;
 }
 
 .product-image img {
@@ -269,10 +267,7 @@ export default {
 }
 
 .product-list-details h3 {
-
   font-size: 35px;
-
-
 }
 
 
