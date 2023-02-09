@@ -65,12 +65,14 @@ export default {
 
     methods:{
         onSubmit(){
-            let productReview = {
+            let productReview = { /**now we have to send the review to our parent component app.vue, in other words we cannot display the reviews, name and ratin on
+                                    on our own, so to send this method and data we use custome events $emit to tranfer the data from child to parent component */
                 name: this.name,
                 review: this.review,
                 rating: this.rating
             }
 
+            this.$emit("review-submitted", productReview)
             this.name = null,
             this.review = null,
             this.rating = null
