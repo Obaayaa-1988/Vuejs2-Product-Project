@@ -38,10 +38,10 @@
 
         <div class="review-width"> 
             <h2>Reviews</h2>
-            <div class="review-card"> 
-                <p>Name: {{ name }}</p>
-                <p> Review: I really love the product very much</p>
-                <p>rating: {{ rating }}</p>
+            <div class="review-card" v-for="review in reviews" :key="review"> 
+                <p>Name: {{ review.name }}</p>
+                <p> Review: {{ review.reviews }}</p>
+                <p>rating: {{ review.rating }}</p>
 
             </div>
         </div>
@@ -58,7 +58,7 @@ export default {
     data (){
         return{
             name: null,
-            review: null,
+            reviews: null,
             rating: null
         }
     },
@@ -68,13 +68,13 @@ export default {
             let productReview = { /**now we have to send the review to our parent component app.vue, in other words we cannot display the reviews, name and ratin on
                                     on our own, so to send this method and data we use custome events $emit to tranfer the data from child to parent component */
                 name: this.name,
-                review: this.review,
+                reviews: this.reviews,
                 rating: this.rating
             }
 
             this.$emit("review-submitted", productReview)
             this.name = null,
-            this.review = null,
+            this.reviews = null,
             this.rating = null
         }
 
