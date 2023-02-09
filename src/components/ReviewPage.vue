@@ -3,22 +3,22 @@
     <div class="review-flex" >
         <div class="form-width"> 
 
-            <form> 
+            <form @submit.prevent="onSubmit"> 
                 <h2>Review Form</h2>
     
                 <p> 
                     <label for="name">Name:</label>
-                    <input id="name" type="text" >
+                    <input id="name" type="text" v-model="name">
                 </p>
                 <p> 
                     <label>Reviews:</label>
-                 <textarea id="review"></textarea>
+                 <textarea id="review" v-model="review"></textarea>
     
                 </p>
     
                 <p> 
                     <label>Rating</label>
-                    <select id="rating">
+                    <select id="rating" v-model.number="rating"><!---v-model.number so a user can pick a number-->
                         <option>0</option> 
                         <option>5</option> 
                         <option>4</option> 
@@ -61,6 +61,21 @@ export default {
             review: null,
             rating: null
         }
+    },
+
+    methods:{
+        onSubmit(){
+            let productReview = {
+                name: this.name,
+                review: this.review,
+                rating: this.rating
+            }
+
+            this.name = null,
+            this.review = null,
+            this.rating = null
+        }
+
     }
 
 }
