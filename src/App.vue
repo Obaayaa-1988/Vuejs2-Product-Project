@@ -61,21 +61,25 @@
   
           </div> -->
           <!--  -->
-  
-          <div v-for="(variant, index  ) in variants" :key="variant.variantsId" class="socks-colors"
-            :style="{ backgroundColor: variant.variantsColor }" 
-            @mouseover="updateProduct(index)">
-  
-                 <!-- @mouseover="updateProduct(variant.variantsImage) -->
-             <!----here we are style binding with a class which has been partially styled with no background colors in css-->
-            <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
-            <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
-                                                                      and the updateProduct function that took the variantImage variable as a parameter-->
-  
-            <!-- <p @mouseover="updateProduct(variant.variantsImage)"></p>  -->
-            <!-- <p @mouseover="updateProduct(variant.variantsImage)">{{ variant.variantsColor }}</p>  -->
-  
+
+          <div class="flex-colors"> 
+            <div v-for="(variant, index  ) in variants" :key="variant.variantsId" class="socks-colors"
+              :style="{ backgroundColor: variant.variantsColor }" 
+              @mouseover="updateProduct(index)">
+    
+                   <!-- @mouseover="updateProduct(variant.variantsImage) -->
+               <!----here we are style binding with a class which has been partially styled with no background colors in css-->
+              <!----background colors vue is able to identify the named colors in the data and apply it to the div's background -->
+              <!----also the variantsColors is now then connected to the variantImage in the same div with help of the mouseover event
+                                                                        and the updateProduct function that took the variantImage variable as a parameter-->
+    
+              <!-- <p @mouseover="updateProduct(variant.variantsImage)"></p>  -->
+              <!-- <p @mouseover="updateProduct(variant.variantsImage)">{{ variant.variantsColor }}</p>  -->
+    
+            </div>
+
           </div>
+  
   
   
           <!----product color end---->
@@ -134,6 +138,20 @@ export default {
           variantsColor: "purple",
           variantsImage: require('./assets/images/purple-socks.jpg'),
           variantsQuantity: 0,
+
+        },
+        {
+          variantsId: 2235,
+          variantsColor: "hotpink",
+          variantsImage: require('./assets/images/pink-socks.jpg'),
+          variantsQuantity: 0,
+
+        },
+        {
+          variantsId: 2236,
+          variantsColor: "red",
+          variantsImage: require('./assets/images/socks-red.jpg'),
+          variantsQuantity: 12,
 
         },
 
@@ -290,6 +308,12 @@ export default {
   cursor: pointer;
   /* background-color: yellow; */
   margin-top: 1rem;
+}
+
+
+.flex-colors{ 
+  display: flex;
+  justify-content: space-between;
 }
 
 /* .socks-colors1{
