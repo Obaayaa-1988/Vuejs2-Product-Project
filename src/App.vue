@@ -95,7 +95,7 @@
     <!--------------main flex------------end-->
     <!--------------review and rating flex----start-->
     <ReviewPage class="rev" @review-submitted="addReview" />
-    <CarouselSlider  />
+    <!-- <CarouselSlider  /> -->
    
     <!--------------review and rating flex----end-->
     
@@ -105,13 +105,13 @@
 
 <script>
 import ReviewPage from './components/ReviewPage.vue';
-import CarouselSlider from './components/CarouselSlider.vue';
+// import CarouselSlider from './components/CarouselSlider.vue';
 
 export default {
   name: 'App',
   components: {
     ReviewPage,
-    CarouselSlider
+    // CarouselSlider
   },
 
   data() {
