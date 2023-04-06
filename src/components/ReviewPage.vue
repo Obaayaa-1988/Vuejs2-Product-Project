@@ -3,7 +3,7 @@
     <div class="review-flex" >
         <div class="form-width"> 
 
-            <form @submit.prevent="onSubmit"> 
+            <form @submit.prevent="submitReview"> 
                 <h2>Review Form</h2>
     
                 <p> 
@@ -11,13 +11,13 @@
                     <input id="name" type="text" v-model="name">
                 </p>
                 <p> 
-                    <label>Reviews:</label>
-                 <textarea id="review" v-model="review"></textarea>
+                    <label for="reviews">Reviews:</label>
+                 <textarea id="review" v-model="reviews"></textarea>
     
                 </p>
     
                 <p> 
-                    <label>Rating</label>
+                    <label for="rating">Rating</label>
                     <select id="rating" v-model.number="rating"><!---v-model.number so a user can pick a number-->
                         <option>0</option> 
                         <option>5</option> 
@@ -37,11 +37,12 @@
         </div>
 
         <div class="review-width"> 
-            <h2>Reviews</h2>
-            <div class="review-card" v-for="review in reviews" :key="review"> 
-                <p>Name: {{ review.name }}</p>
-                <p> Review: {{ review.reviews }}</p>
-                <p>rating: {{ review.rating }}</p>
+            <!-- <h2>Reviews</h2> -->
+
+            <div v-for="revy in reviews" :key="revy" class="review-card"> 
+                <p>Name: {{ revy.name }}</p>
+                <p> Review: {{ revy.reviews }}</p>
+                <p>rating: {{ revy.rating }}</p>
 
             </div>
         </div>
@@ -64,7 +65,7 @@ export default {
     },
 
     methods:{
-        onSubmit(){
+        submitReview(){
             let productReview = { /**now we have to send the review to our parent component app.vue, in other words we cannot display the reviews, name and ratin on
                                     on our own, so to send this method and data we use custome events $emit to tranfer the data from child to parent component */
                 name: this.name,
