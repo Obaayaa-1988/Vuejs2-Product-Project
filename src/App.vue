@@ -99,7 +99,7 @@
     <!--------------main flex------------end-->
     <!--------------review and rating flex----start-->
     <ReviewPage class="rev" @review-submitted="addReview" />
-    <CarouselSlider  />
+    <!-- <CarouselSlider  /> -->
    
     <!--------------review and rating flex----end-->
     
@@ -109,13 +109,13 @@
 
 <script>
 import ReviewPage from './components/ReviewPage.vue';
-import CarouselSlider from './components/CarouselSlider.vue';
+// import CarouselSlider from './components/CarouselSlider.vue';
 
 export default {
   name: 'App',
   components: {
     ReviewPage,
-    CarouselSlider
+    // CarouselSlider
   },
 
   data() {
@@ -144,7 +144,7 @@ export default {
           variantsId: 2235,
           variantsColor: "hotpink",
           variantsImage: require('./assets/images/pink-socks.jpg'),
-          variantsQuantity: 0,
+          variantsQuantity: 21,
 
         },
         {
@@ -162,7 +162,7 @@ export default {
       total: 0,
       shipping: 5,
       sum: 0,
-      reviews: [ ]
+      reviewses: []
 
     }
   },
@@ -195,7 +195,7 @@ export default {
 
 
     addReview(productReview){
-      this.reviews.push(productReview)
+      this.reviewses.push(productReview)
 
     }
 
