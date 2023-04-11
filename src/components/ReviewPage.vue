@@ -12,7 +12,7 @@
                 </p>
                 <p> 
                     <label for="reviews">Reviews:</label>
-                 <textarea id="review" v-model="reviews"></textarea>
+                 <textarea id="review" v-model="review"></textarea>
     
                 </p>
     
@@ -27,24 +27,20 @@
                         <option>1</option> 
                     </select>
                 </p>
-    
-    
-                <button>submit</button>
-    
-    
-    
+                <button  @click.prevent="submitReview" type="submit" value="Submit" >submit</button>
+
             </form>
         </div>
 
         <div class="review-width"> 
             <!-- <h2>Reviews</h2> -->
 
-            <div v-for="revy in reviews" :key="revy" class="review-card"> 
-                <p>Name: {{ revy.name }}</p>
-                <p> Review: {{ revy.reviews }}</p>
-                <p>rating: {{ revy.rating }}</p>
+            <!-- <div class="review-card"> 
+                <p>Name: {{ name }}</p>
+                <p> Review: {{ review }}</p>
+                <p>rating: {{ rating }}</p>
 
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -59,26 +55,28 @@ export default {
     data (){
         return{
             name: null,
-            reviews: null,
+            review: null,
             rating: null
         }
     },
 
     methods:{
+
         submitReview(){
             let productReview = { /**now we have to send the review to our parent component app.vue, in other words we cannot display the reviews, name and ratin on
                                     on our own, so to send this method and data we use custome events $emit to tranfer the data from child to parent component */
                 name: this.name,
-                reviews: this.reviews,
+                review: this.review,
                 rating: this.rating
             }
 
-            this.$emit("review-submitted", productReview)
+            
+            this.$emit("rev-sub", productReview)
             this.name = null,
-            this.reviews = null,
+            this.review = null,
             this.rating = null
         }
-
+        
     }
 
 }
