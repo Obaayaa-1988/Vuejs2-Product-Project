@@ -27,20 +27,21 @@
                         <option>1</option> 
                     </select>
                 </p>
-                <button  @click.prevent="submitReview" type="submit" value="Submit" >submit</button>
+                <button type="submit" value="Submit" >submit</button>
 
             </form>
         </div>
 
         <div class="review-width"> 
-            <!-- <h2>Reviews</h2> -->
+            <h3>Reviews</h3> 
+            <p v-if="!reviews.length">There are no reviews now</p>
 
-            <!-- <div class="review-card"> 
-                <p>Name: {{ name }}</p>
-                <p> Review: {{ review }}</p>
-                <p>rating: {{ rating }}</p>
+             <div v-for="review in reviews" :key="review" class="review-card"> 
+                <p>Name: {{ review.name }}</p>
+                <p> Review: {{ review.review }}</p>
+                <p>rating: {{ review.rating }}</p>
 
-            </div> -->
+             </div>
         </div>
     </div>
 
@@ -51,6 +52,7 @@
 <script>
 export default {
     name: "ReviewPage",
+    props: ["reviews"],
 
     data (){
         return{
@@ -71,7 +73,7 @@ export default {
             }
 
             
-            this.$emit("rev-sub", productReview)
+            this.$emit("review-submit", productReview)
             this.name = null,
             this.review = null,
             this.rating = null
