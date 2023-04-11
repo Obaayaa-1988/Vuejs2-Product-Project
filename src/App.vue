@@ -141,14 +141,14 @@ export default {
 
         },
         {
-          variantsId: 2235,
+          variantsId: 2236,
           variantsColor: "hotpink",
           variantsImage: require('./assets/images/pink-socks.jpg'),
           variantsQuantity: 21,
 
         },
         {
-          variantsId: 2236,
+          variantsId: 2237,
           variantsColor: "red",
           variantsImage: require('./assets/images/socks-red.jpg'),
           variantsQuantity: 12,
