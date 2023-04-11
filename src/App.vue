@@ -98,7 +98,7 @@
     </div>
     <!--------------main flex------------end-->
     <!--------------review and rating flex----start-->
-    <ReviewPage class="rev" @review-submitted="addReview" />
+    <ReviewPage class="rev" />
     <!-- <CarouselSlider  /> -->
    
     <!--------------review and rating flex----end-->
@@ -162,7 +162,8 @@ export default {
       total: 0,
       shipping: 5,
       sum: 0,
-      reviewses: []
+      // reviews: []
+  
 
     }
   },
@@ -194,10 +195,13 @@ export default {
     },
 
 
-    addReview(productReview){
-      this.reviewses.push(productReview)
+    // addReview(productReview){
+    //   this.reviews.push(productReview)
+    //   // console.log("heeelloooo", productReview)
 
-    }
+     
+
+    // }
 
 
 
