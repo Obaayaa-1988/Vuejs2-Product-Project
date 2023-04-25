@@ -163,16 +163,15 @@ button{
     font-size: 3rem;
 } */
 
-.review-card{
+/* .review-card{
     background-color: white;
     width: 70%;
     height: 150px;
     border-radius: 10px;
     margin-bottom: 2rem;
-}
+} */
 .review-card p{
-    font-size: 20px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 /* .length{

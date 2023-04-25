@@ -186,21 +186,25 @@ export default {
    
 
     totalProductAdded() {
-      return this.total = this.cart * this.price;/**this function says that the total must increase from current state 0 to when the add to cart button is clicked + shippiong fee
+      return this.total = this.cart *this.price;/**this function says that the total must increase from current state 0 to when the add to cart button is clicked + shippiong fee
           */
     },
 
     totalItemShipping() {
-      return this.sum = this.totalProductAdded() + this.shipping; 
+      return this.sum = this.totalProductAdded() + (this.shipping);
     },
 
 
     addReview(productReview){
       this.reviews.push(productReview)
       console.log("heeelloooo", productReview)
-    }
+    },
 
-
+    // shippingFee(){
+    //   if(this.cart++){
+    //    return this.shipping + this.price
+    //   }
+    // }
 
   },
 
