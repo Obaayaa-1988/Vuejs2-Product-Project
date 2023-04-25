@@ -191,7 +191,7 @@ export default {
     },
 
     totalItemShipping() {
-      return this.sum = this.totalProductAdded() + (this.shipping);
+      return this.sum = this.totalProductAdded() + this.shipping;
     },
 
 
